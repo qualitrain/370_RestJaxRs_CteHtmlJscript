@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>test JScript</title>
+<style type="text/css">
+body{
+	padding-left: 20px;
+
+	background-color: hsl(60,77%,95%);
+	
+	font-family: sans-serif;
+	font-size: .9em;
+}
+body h2{
+	text-align: center;
+	margin-bottom: 30px;
+	margin-top: 30px;
+}
+img#logo{
+	height: 50px;
+	position:absolute;
+}
+div.divTest {
+	border: 3px solid gray;
+	margin-top: 4px;
+	padding-left: 20px;
+	width: 600px;
+	height:210px;
+	display: inline-block;
+	vertical-align: top;
+	background-color: white;
+}
+
+div#idDivNarticulos {
+	background-color: hsl(60,99%,60%);
+	height:100px;
+}
+div#idDivNarticulos h3.status {
+	text-align: center;
+}
+div#idDivNarticulos h3.status span#nArticulos{
+	color: hsl(15,100%,40%);
+}
+
+div#idDivAltaArticulos {
+	background-color: hsl(5,99%,95%);
+}
+div#idDivAltaArticulos label{
+	display: inline-block;
+	width: 80px;
+}
+div#idDivAltaArticulos input[type="button"], div#idDivAltaArticulos input[type="reset"]{
+	margin-top: 4px;
+	width: 80px;
+}
+div#idDivAltaArticulos input[type="button"]{
+	background-color: hsl(224,100%,40%);
+	color: white;
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+
+div#idDivAltaArticulos h4{
+	margin-top: 5px;
+}
+div#idDivAltaArticulos span#statusAltaArticulo{
+	font-family: monospace;
+	font-size: small;
+	color: hsl(5,99%,50%);
+}
+
+div#idDivArticulos {
+	overflow:scroll;
+	background-color: hsl(224,99%,90%);
+}
+div#idDivArticulos table{
+	line-height: 1.2em;
+}
+div#idDivArticulos table caption{
+	font-size: 1.2em;
+	margin-bottom: 4px;
+	color: hsl(60,99%,20%);
+}
+div#idDivArticulos th{
+	background-color: hsl(224,99%,50%);
+	color: white;
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+div#idDivArticulos tr:nth-child(odd){
+	background-color: hsl(224,99%,80%);
+	color: hsl(224,99%,20%);
+}
+div#idDivArticulos tr:nth-child(even){
+	background-color: hsl(224,99%,60%);
+	color: hsl(220,99%,95%);
+}
+div#idDivArticulos td{
+	padding-left: 3px;
+	padding-right: 3px;
+}
+
+div#idDivConsultaArticulo {
+	background-color: hsl(50,99%,60%);
+}
+div#idDivConsultaArticulo textarea{
+	color: hsl(220,90%,30%);
+}
+
+div#idDivEliminacionArt {
+	background-color: hsl(5,99%,75%);
+}
+div#idDivEliminacionArt button{
+	background-color: hsl(5,99%,50%);
+	color:white;
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+div#idDivEliminacionArt textarea{
+	color: hsl(5,90%,50%);
+	background-color: hsl(60,99%,80%);
+	text-decoration: line-through;
+}
+
+h3.descTest {
+	font-family: monospace;
+	color: hsl(239,60%,50%);
+	font-size: 1.25em;
+}
+</style>
+
+<script type="text/javascript" charset="ISO-8859-1">
+	var spanNarticulos;
+	var spanStatusAltaArt;
+	var formArticulo;
+	var tbodyArticulos;
+	var inputCveArt;
+	var inputCveArtDelete;
+	var inputArtJson;
+	var inputArtXml;
+	
+	function actualizaNarticulos(txtNarticulos){
+		spanNarticulos.innerHTML = txtNarticulos;
+	}
+	function actualizaListaArticulos(articulosJSON){
+		var arrHtmlArticulos = articulosJSON.map( function(x){
+			    return "<tr>"
+						+"<td>"	+ x.clave + "</td>"
+						+"<td>"	+ x.nombre + "</td>"
+						+"<td>"	+ x.descripcion + "</td>"
+						+"<td>"	+ x.costo + "</td>"
+						+"</tr>";} );
+		var textoHtmlTbody = "";
+		for(trI of arrHtmlArticulos){
+			textoHtmlTbody += trI;
+		}
+		tbodyArticulos.innerHTML = textoHtmlTbody;
+	}
+
+	function actualizaStatusAltaArticulo(txtRespAlta){
+		spanStatusAltaArt.innerHTML = txtRespAlta;
+	}
+	function getNArticulos(){
+		  var xhttp=new XMLHttpRequest();
+		  xhttp.open("GET","./webapi/articulo/numArticulos");
+		  xhttp.send();
+		  xhttp.onreadystatechange=function(){
+		        if(xhttp.readyState == 4 && xhttp.status == 200){
+		           actualizaNarticulos(xhttp.responseText);
+		        }
+		  }			
+	}
+	function getArticulos(){
+		  var xhttp=new XMLHttpRequest();
+		  xhttp.open("GET","./webapi/articulo/todos");
+		  xhttp.responseType = "json";
+		  xhttp.send();
+		  xhttp.onreadystatechange=function(){
+		        if(xhttp.readyState == 4 && xhttp.status == 200){
+		        	actualizaListaArticulos(xhttp.response);
+		        }
+		  }			
+	}
+	function getArticuloI(){
+		  var xhttp=new XMLHttpRequest();
+		  xhttp.open("GET","./webapi/articulo?clave=" + inputCveArt.value);
+		  xhttp.setRequestHeader("Accept","application/json");
+		  xhttp.send();
+		  xhttp.onreadystatechange=function(){
+		        if(xhttp.readyState == 4) // Terminada
+		        	if( xhttp.status == 200) // Status OK
+		        		inputArtJson.value = xhttp.responseText;
+		        	else
+		        	if( xhttp.status == 204) // No content
+		        		inputArtJson.value = "Respuesta sin contenido"
+		  }			
+	}
+	
+	function sendArticulo(){
+		  var formDatos = new URLSearchParams();
+		  formDatos.set("clave", formArticulo["clave"].value);
+		  formDatos.set("nombre", formArticulo["nombre"].value);
+		  formDatos.set("descripcion", formArticulo["descripcion"].value);
+		  formDatos.set("costo", formArticulo["costo"].value);
+		  
+		  var xhttp=new XMLHttpRequest();
+		  xhttp.open("POST", "./webapi/articulo");
+		  xhttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+		  xhttp.send(formDatos);
+		  xhttp.onreadystatechange=function(){
+		        if(xhttp.readyState == 4 && xhttp.status == 200){
+		           actualizaStatusAltaArticulo(xhttp.responseText);
+		           getNArticulos();
+		           getArticulos();
+		        }
+		  }			
+	}
+	function eliminarArticuloI(){
+		  var xhttp=new XMLHttpRequest();
+		  xhttp.open("DELETE","./webapi/articulo?clave=" + inputCveArtDelete.value);
+		  xhttp.setRequestHeader("Accept","application/xml");
+		  xhttp.send();
+		  xhttp.onreadystatechange=function(){
+		        if(xhttp.readyState == 4)
+		        	if(xhttp.status == 200){
+		        	   inputArtXml.value = xhttp.responseText;
+			           getNArticulos();
+			           getArticulos();
+		           }
+		        	else
+		        	if(xhttp.status == 204){ // Sin respuestas
+		        	   inputArtXml.value = "Respuesta sin contenido";
+		        	}
+		  }			
+	}
+
+	window.onload = function() {
+		spanNarticulos = document.getElementById("nArticulos");
+		spanStatusAltaArt = document.getElementById("statusAltaArticulo");
+		formArticulo = document.getElementById("idFormArticulo");
+		tbodyArticulos = document.getElementById("idListaArticulos");
+		inputCveArt = document.getElementById("idCveArticulo");
+		inputArtJson = document.getElementById("idArtJson");
+		inputCveArtDelete = document.getElementById("idCveArtDelete");
+		inputArtXml = document.getElementById("idArtXml");
+		
+		getNArticulos();
+		getArticulos();
+	}
+</script>
+
+</head>
+<body>
+	<img id="logo" src="./logoQtxSinFondoCorto.png" >
+	<h2>Pruebas de servicios RESTful</h2>
+	<div id="idDivConsultaArticulo" class="divTest">
+		<h3 class="descTest">test GET /articulo?clave=</h3>
+		<input type="text" id="idCveArticulo" placeholder="clave Articulo" size="10">
+		<button onclick="getArticuloI()">Consultar</button><br>
+		<textarea id="idArtJson" readonly="readonly" rows="7" cols="70"></textarea>
+	</div>
+	<div id="idDivAltaArticulos" class="divTest">
+		<h3 class="descTest">test POST /articulo</h3>
+		<form id="idFormArticulo">
+			<label for="idClave">Clave:</label> <input id="idClave" type="text"
+				name="clave" size="15"><br> <label for="idNombre">Nombre:</label>
+			<input id="idNombre" type="text" name="nombre" size="30"><br>
+			<label for="idDescripcion">Descripci&oacute;n:</label> <input
+				id="idDescripcion" type="text" name="descripcion" size="40"><br>
+			<label for="idCosto">Costo:</label> <input id="idCosto" type="text"
+				name="costo" size="10"><br> 
+			<input type="button"
+				value="Dar de alta" onclick="sendArticulo()"> 
+			<input type="reset" value="Limpiar"
+				onclick="spanStatusAltaArt.innerHTML =''">
+		</form>
+		<h4>
+			Resultado de &uacute;ltima alta de art&iacute;culo:<span
+				id="statusAltaArticulo"></span>
+		</h4>
+	</div>
+	<div id="idDivArticulos" class="divTest">
+		<h3 class="descTest">test GET /articulo/todos</h3>
+		<table id="idTablaArticulos">
+			<caption>Art&iacute;culos en inventario</caption>
+			<thead>
+				<tr>
+					<th>Clave</th>
+					<th>Nombre</th>
+					<th>Descripci&oacute;n</th>
+					<th>Costo</th>
+				</tr>
+			</thead>
+			<tbody id="idListaArticulos">
+
+			</tbody>
+		</table>
+	</div>
+	<div id="idDivEliminacionArt" class="divTest">
+		<h3 class="descTest">test DELETE /articulo?clave=</h3>
+		<input type="text" id="idCveArtDelete" placeholder="clave Articulo" size="10">
+		<button onclick="eliminarArticuloI()">Eliminar</button><br>
+		<textarea id="idArtXml" readonly="readonly" rows="7" cols="70"></textarea>
+	</div>
+	<div id="idDivNarticulos" class="divTest">
+		<h3 class="descTest">test GET /articulo/numArticulos</h3>
+		<h3 class="status">
+			Hay <span id="nArticulos">0</span> art&iacute;culo(s) en inventario
+		</h3>
+	</div>
+</body>
+</html>
