@@ -43,6 +43,7 @@ div.divTest {
 div#idDivNarticulos {
 	background-color: hsl(60,89%,70%);
 	height:100px;
+	display:none;
 }
 div#idDivNarticulos h3.status {
 	text-align: center;
@@ -53,6 +54,7 @@ div#idDivNarticulos h3.status span#nArticulos{
 
 div#idDivAltaArticulos {
 	background-color: hsl(5,99%,95%);
+	display:none;
 }
 div#idDivAltaArticulos label{
 	display: inline-block;
@@ -82,6 +84,7 @@ div#idDivAltaArticulos span#statusAltaArticulo{
 div#idDivArticulos {
 	overflow:scroll;
 	background-color: hsl(224,99%,90%);
+	display:none;
 }
 div#idDivArticulos table{
 	line-height: 1.2em;
@@ -114,6 +117,7 @@ div#idDivArticulos td{
 
 div#idDivConsultaArticulo {
 	background-color: hsl(50,59%,80%);
+	display:none;
 }
 div#idDivConsultaArticulo textarea{
 	color: hsl(220,90%,30%);
@@ -122,6 +126,7 @@ div#idDivConsultaArticulo textarea{
 
 div#idDivEliminacionArt {
 	background-color: hsl(5,99%,85%);
+	display:none;
 }
 div#idDivEliminacionArt button{
 	background-color: hsl(5,99%,30%);

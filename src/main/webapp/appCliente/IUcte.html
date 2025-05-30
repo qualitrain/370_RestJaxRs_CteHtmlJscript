@@ -4,64 +4,10 @@
 	<meta charset="ISO-8859-1">
 	<title>test SPA</title>
 	<link rel="stylesheet" type="text/css" href="estiloGral.css" />
+	<link rel="stylesheet" type="text/css" href="checkboxes.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 	<script src="appCte.js"></script>
 <style>
-        .checkbox-container {
-        	margin-top:40px;
-            background: #f8f9fa;
-            border-radius: 10px;
-            padding: 10px;
-            border: 1px solid #e0e0e0;
-			width: 93vw;
-        }
-        .checkbox-item {
-            padding: 5px;
-            margin-right: 12px;
-            margin-top:5px;
-            background: white;
-            border-radius: 8px;
-            border-left: 4px solid #3498db;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-            text-align: left;
-            display: inline-block;
-            transition: all 0.3s ease;
-            width: 150px;
-			height: 8vh;
-			vertical-align: top;
-        }
-        .checkbox-item:hover {
-            transform: translateX(5px);
-            border-left-color: #e74c3c;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        .checkbox-item input {
-            width: 20px;
-            height: 20px;
-            margin-right: 15px;
-            cursor: pointer;
-        }
-         .checkbox-item i {
-           margin-right: 1px;
-           color: #3498db;
-           font-size: 1.2rem;
-           min-width: 20px;
-       	}
-         .checkbox-item:nth-child(2) i {
-            color: hsl(230,100%,50%);
-        }
-        
-        .checkbox-item:nth-child(3) i {
-            color: #9b59b6;
-        }
-        
-        .checkbox-item:nth-child(4) i {
-            color: #e74c3c;
-        }
-        
-        .checkbox-item:nth-child(5) i {
-            color: hsl(50,100%,50%);
-        }
         
         
 </style>
@@ -70,35 +16,35 @@
 	<img id="logo" src="./logoQtxSinFondoCorto.png" >
 	<h2>Pruebas de servicios RESTful y SPA</h2>
 	<div class="checkbox-container">
-            <div class="checkbox-item">
-                <input type="checkbox" id="consultar_id" name="consultar_id" 
-                       checked onchange="activarDesactivarConsulta(event)">
-                <label for="consultar_id"><i class="fas fa-search"></i> Consultar Artículo X ID</label>
-            </div>
-            
-            <div class="checkbox-item">
-                <input type="checkbox" id="insertar" name="insertar" 
-                       onchange="activarDesactivarAlta(event)" checked>
-                <label for="insertar"><i class="fas fa-plus-circle"></i> Insertar Artículo</label>
-            </div>
-            
-            <div class="checkbox-item">
-                <input type="checkbox" id="consultar_todos" name="consultar_todos"  
-                       onchange="activarDesactivarConsultaGral(event)" checked>
-                <label for="consultar_todos"><i class="fas fa-list"></i> Consultar todos los artículos</label>
-            </div>
-            
-            <div class="checkbox-item">
-                <input type="checkbox" id="eliminar" name="eliminar" 
-                       onchange="activarDesactivarBorrado(event)" checked>
-                <label for="eliminar"><i class="fas fa-trash-alt"></i> Eliminar Artículo</label>
-            </div>
-            
-            <div class="checkbox-item">
-                <input type="checkbox" id="contar" name="contar"  
-                       onchange="activarDesactivarConsultaCuantos(event)" checked>
-                <label for="contar"><i class="fas fa-calculator"></i> Consultar cuántos artículos hay</label>
-            </div>
+        <div class="checkbox-item">
+            <input type="checkbox" id="consultar_id" name="consultar_id" 
+                   onchange="activarDesactivarConsulta(event)">
+            <label for="consultar_id"><i class="fas fa-search"></i> Consultar Artículo X ID</label>
+        </div>
+        
+        <div class="checkbox-item">
+            <input type="checkbox" id="insertar" name="insertar" 
+                   onchange="activarDesactivarAlta(event)" >
+            <label for="insertar"><i class="fas fa-plus-circle"></i> Insertar Artículo</label>
+        </div>
+        
+        <div class="checkbox-item">
+            <input type="checkbox" id="consultar_todos" name="consultar_todos"  
+                   onchange="activarDesactivarConsultaGral(event)" >
+            <label for="consultar_todos"><i class="fas fa-list"></i> Consultar todos los artículos</label>
+        </div>
+        
+        <div class="checkbox-item">
+            <input type="checkbox" id="eliminar" name="eliminar" 
+                   onchange="activarDesactivarBorrado(event)" >
+            <label for="eliminar"><i class="fas fa-trash-alt"></i> Eliminar Artículo</label>
+        </div>
+        
+        <div class="checkbox-item">
+            <input type="checkbox" id="contar" name="contar"  
+                   onchange="activarDesactivarConsultaCuantos(event)" >
+            <label for="contar"><i class="fas fa-calculator"></i> Consultar cuántos artículos hay</label>
+        </div>
     </div>
 	
 	<div id="idDivConsultaArticulo" class="divTest">
@@ -107,6 +53,7 @@
 		<button onclick="getArticuloI()">Consultar</button><br>
 		<textarea id="idArtJson" readonly="readonly" rows="7"></textarea>
 	</div>
+	
 	<div id="idDivAltaArticulos" class="divTest">
 		<h3 class="descTest">test POST /articulo</h3>
 		<form id="idFormArticulo">
@@ -127,6 +74,7 @@
 				id="statusAltaArticulo"></span>
 		</h4>
 	</div>
+	
 	<div id="idDivArticulos" class="divTest">
 		<h3 class="descTest">test GET /articulo/todos</h3>
 		<table id="idTablaArticulos">
@@ -144,12 +92,14 @@
 			</tbody>
 		</table>
 	</div>
+	
 	<div id="idDivEliminacionArt" class="divTest">
 		<h3 class="descTest">test DELETE /articulo?clave=</h3>
 		<input type="text" id="idCveArtDelete" placeholder="clave Articulo" size="10">
 		<button onclick="eliminarArticuloI()">Eliminar</button><br>
 		<textarea id="idArtXml" readonly="readonly" rows="7" cols="70"></textarea>
 	</div>
+	
 	<div id="idDivNarticulos" class="divTest">
 		<h3 class="descTest">test GET /articulo/numArticulos</h3>
 		<h3 class="status">
