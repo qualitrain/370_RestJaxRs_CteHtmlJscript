@@ -1,0 +1,144 @@
+body{
+	padding-left: 20px;
+
+	background-color: hsl(230,100%,98%);
+	
+	font-family: sans-serif;
+	font-size: .9em;
+	line-height: 1.4rem;
+}
+button{
+	width:10rem;
+	border-radius: 5px;
+}
+body h2{
+	text-align: center;
+	margin-bottom: 30px;
+	margin-top: 30px;
+}
+img#logo{
+	height: 50px;
+	position:absolute;
+}
+div.divTest {
+/*	border: 1px solid hsl(200,20%,90%); */
+
+	box-sizing: border-box;
+	border-radius: 5px;
+	box-shadow: 2px 2px 2px 1px hsl(200,10%,70%);
+	
+	margin-top: 6px;
+	margin-right: 3px;
+	padding-left: 20px;
+	
+	width: 47vw;
+	min-height:33vh;
+	display: inline-block;
+	min-width:350px;
+	
+	vertical-align: top;
+	background-color: white;
+}
+
+div#idDivNarticulos {
+	background-color: hsl(60,89%,70%);
+	height:100px;
+}
+div#idDivNarticulos h3.status {
+	text-align: center;
+}
+div#idDivNarticulos h3.status span#nArticulos{
+	color: hsl(15,100%,40%);
+}
+
+div#idDivAltaArticulos {
+	background-color: hsl(5,99%,95%);
+}
+div#idDivAltaArticulos label{
+	display: inline-block;
+	width: 80px;
+}
+div#idDivAltaArticulos input[type="button"], div#idDivAltaArticulos input[type="reset"]{
+	margin-top: 4px;
+	width: 80px;
+	border-radius: 5px;
+}
+div#idDivAltaArticulos input[type="button"]{
+	background-color: hsl(224,100%,40%);
+	color: white;
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+
+div#idDivAltaArticulos h4{
+	margin-top: 5px;
+}
+div#idDivAltaArticulos span#statusAltaArticulo{
+	font-family: monospace;
+	font-size: small;
+	color: hsl(5,99%,50%);
+}
+
+div#idDivArticulos {
+	overflow:scroll;
+	background-color: hsl(224,99%,90%);
+}
+div#idDivArticulos table{
+	line-height: 1.2em;
+}
+div#idDivArticulos table caption{
+	font-size: 1.2em;
+	margin-bottom: 4px;
+	color: hsl(60,99%,20%);
+}
+div#idDivArticulos th{
+	background-color: hsl(224,99%,50%);
+	color: white;
+	padding-left:6px;
+	padding-right:6px;
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+div#idDivArticulos tr:nth-child(odd){
+	background-color: hsl(224,99%,80%);
+	color: hsl(224,99%,20%);
+}
+div#idDivArticulos tr:nth-child(even){
+	background-color: hsl(224,99%,60%);
+	color: hsl(220,99%,95%);
+}
+div#idDivArticulos td{
+	padding-left: 6px;
+	padding-right: 6px;
+}
+
+div#idDivConsultaArticulo {
+	background-color: hsl(50,59%,80%);
+}
+div#idDivConsultaArticulo textarea{
+	color: hsl(220,90%,30%);
+	width: 98%;
+}
+
+div#idDivEliminacionArt {
+	background-color: hsl(5,99%,85%);
+}
+div#idDivEliminacionArt button{
+	background-color: hsl(5,99%,30%);
+	color:white;
+	padding-top: 3px;
+	padding-bottom: 3px;
+}
+div#idDivEliminacionArt textarea{
+	margin-top:5px;
+	color: hsl(5,90%,50%);
+	background-color: hsl(60,99%,80%);
+	text-decoration: line-through;
+	width: 98%;
+}
+
+h3.descTest {
+	font-family: monospace;
+	color: hsl(239,80%,20%);
+	font-size: 1.25em;
+}

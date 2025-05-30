@@ -16,6 +16,6 @@
 			name="costo" size="10"><br>
 		<input type="submit" value="Dar de alta">
 	</form>
-	Pruebe la versi&oacute;n <a href="./testRest.html">SPA</a> (Single Page Application) en JavaScript 
+	Pruebe la versi&oacute;n <a href="./appCliente/IUcte.html">SPA</a> (Single Page Application) en JavaScript 
 </body>
 </html>

@@ -162,6 +162,5 @@ public class ServicioRest {
 		ServicioRest sr = new ServicioRest();
 		System.out.println(sr.getArticuloXID("C-200P"));
 	}
-
 	
 }
