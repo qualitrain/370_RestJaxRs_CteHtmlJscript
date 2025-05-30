@@ -109,6 +109,56 @@
 		        	}
 		  }			
 	}
+	
+	function activarDesactivarConsulta(evt){
+		let div = document.getElementById("idDivConsultaArticulo");
+		if(evt.target.checked){
+			div.style.display = "inline-block";
+		}
+		else{
+			div.style.display = "none";
+		}
+	}
+	
+	function activarDesactivarConsultaGral(evt){
+		let div = document.getElementById("idDivArticulos");
+		if(evt.target.checked){
+			div.style.display = "inline-block";
+		}
+		else{
+			div.style.display = "none";
+		}
+	}
+	
+	function activarDesactivarConsultaCuantos(evt){
+		let div = document.getElementById("idDivNarticulos");
+		if(evt.target.checked){
+			div.style.display = "inline-block";
+		}
+		else{
+			div.style.display = "none";
+		}
+	}
+
+	function activarDesactivarAlta(evt){
+		let div = document.getElementById("idDivAltaArticulos");
+		if(evt.target.checked){
+			div.style.display = "inline-block";
+		}
+		else{
+			div.style.display = "none";
+		}
+	}
+
+	function activarDesactivarBorrado(evt){
+		let div = document.getElementById("idDivEliminacionArt");
+		if(evt.target.checked){
+			div.style.display = "inline-block";
+		}
+		else{
+			div.style.display = "none";
+		}
+	}
 
 	window.onload = function() {
 		spanNarticulos = document.getElementById("nArticulos");
